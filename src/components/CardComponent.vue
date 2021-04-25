@@ -27,6 +27,16 @@
       <div class="col-sm-8 col-12">
         <h2 class="bold">{{ data.keterangan }}</h2>
       </div>
+      <div class="col-sm-4 col-12"></div>
+      <div class="col-sm-8 col-12">
+        <button
+          type="button"
+          class="btn btn-primary btn-done"
+          @click="removeFunc(data.nim)"
+        >
+          Selesai
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -47,6 +57,11 @@ export default {
       );
     },
   },
+  methods: {
+    removeFunc(nim) {
+      this.$emit("remove", nim);
+    },
+  },
 };
 </script>
 
@@ -57,5 +72,11 @@ export default {
   border-radius: 20px;
   margin-bottom: 20px;
   text-align: left;
+}
+.btn-done {
+  float: right;
+  width: 50%;
+  height: 3em;
+  margin-right: 20%;
 }
 </style>

@@ -7,7 +7,7 @@
       <div class="card-body">
         <div class="row">
           <div v-for="data in dataList" :key="data.nim" class="col-12">
-            <CardComponent :data="data" />
+            <CardComponent :data="data" @remove="removeFromList" />
           </div>
         </div>
       </div>
@@ -31,13 +31,22 @@ export default {
   },
   methods: {
     pushData(data) {
-      this.dataList.unshift(data.value);
-      console.log(this.dataList);
-      if (this.dataList.length >= 5) {
-        console.log("list bigger than 10");
-        this.dataList.pop();
-        console.log(this.dataList);
+      this.dataList.push(data.value);
+      //   this.dataList.unshift(data.value);
+      //   if (this.dataList.length >= 10) {
+      //     this.dataList.pop();
+      //   }
+    },
+    removeFromList(nim) {
+      console.log("remove", nim);
+      for (var i = 0; i < this.dataList.length; i++) {
+        if (this.dataList[i]["nim"] === nim) {
+          socket.emit("finish_absen", nim);
+          this.dataList.splice(i, 1);
+          i--;
+        }
       }
+      console.log(this.dataList);
     },
   },
   components: { CardComponent },
