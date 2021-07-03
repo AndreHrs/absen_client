@@ -1,4 +1,10 @@
-# webclient-mpt
+# Client Absensi (Attendance Client)
+## Deskripsi
+Aplikasi scanner Qr Code sederhana untuk absensi berbasis React Native. Menggunakan websocket untuk berkomunikasi dengan Server Absensi.
+
+## Description
+Simple React Native attendance application using Qr Code Scanner. Used websocket to communicate with Attendance Server.
+
 
 ## Project setup
 ```
